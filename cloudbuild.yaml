@@ -1,0 +1,27 @@
+steps:
+  # (1)コンテナイメージのビルドを実行
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image",
+        ".",
+      ]
+  # (2)ビルドしたコンテナイメージをArtifact Registryにプッシュ
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image",
+      ]
+  # (3)Artifact RegistryのコンテナイメージをCloud Runにデプロイ
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "spladvice-service"
+      - "--image"
+      - "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image"
+      - "--region"
+      - "asia-northeast1"
