@@ -16,12 +16,12 @@ steps:
         "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image",
       ]
   # (3)Artifact RegistryのコンテナイメージをCloud Runにデプロイ
-  - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      - "run"
-      - "deploy"
-      - "spladvice-service"
-      - "--image"
-      - "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image"
-      - "--region"
-      - "asia-northeast1"
+  # - name: "gcr.io/cloud-builders/gcloud"
+  #   args:
+  #     - "run"
+  #     - "deploy"
+  #     - "spladvice-service"
+  #     - "--image"
+  #     - "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/spladvice-docker-repo/spladvice-image"
+  #     - "--region"
+  #     - "asia-northeast1"
