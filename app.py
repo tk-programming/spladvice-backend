@@ -4,6 +4,9 @@ import supabase
 import uuid
 import os
 
+# ビルドテストをする
+build_test = 0
+
 # SupabaseプロジェクトのURLとアクセスキーを設定します
 if os.environ.get('FLASK_ENV') == 'dev':
     supabase_url = os.environ.get('SUPABASE_URL_DEV')
